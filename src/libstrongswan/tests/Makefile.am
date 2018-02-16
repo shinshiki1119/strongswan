@@ -67,7 +67,7 @@ libstrongswan_tests_CFLAGS = \
   -DPLUGINS=\""${s_plugins}\"" \
   @COVERAGE_CFLAGS@
 
-libstrongswan_tests_LDFLAGS = @COVERAGE_LDFLAGS@
+libstrongswan_tests_LDFLAGS = @COVERAGE_LDFLAGS@ -lwinmm
 libstrongswan_tests_LDADD = \
   $(top_builddir)/src/libstrongswan/libstrongswan.la \
   libtest.la

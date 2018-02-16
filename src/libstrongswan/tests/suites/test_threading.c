@@ -1660,6 +1660,13 @@ Suite *threading_suite_create()
 	Suite *s;
 	TCase *tc;
 
+#ifdef WIN32
+	TIMECAPS t;
+	timeGetDevCaps(&t, sizeof(t));
+	fprintf(stderr, "=== timer resolution min %u max %u\n", t.wPeriodMin, t.wPeriodMax);
+	timeBeginPeriod(t.wPeriodMin);
+#endif
+
 	s = suite_create("threading");
 
 	tc = tcase_create("recursive mutex");
